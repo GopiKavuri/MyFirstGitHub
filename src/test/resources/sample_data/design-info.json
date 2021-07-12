@@ -1,0 +1,40 @@
+{
+  "sampleData": {
+    "e56cca52-fdee-4443-aa26-e2992c48e0a5": {
+      "payload": "sample_data/java_1.dwl"
+    },
+    "f54e5a82-9ecb-4d87-89a3-6b4a0e4b72aa": {
+      "payload": "sample_data/java_2.dwl"
+    },
+    "e7cfbd20-cc38-4de6-9620-46ae74c4ad35": {},
+    "bae87e9f-fb03-4736-bb02-92d6830e8106": {
+      "payload": "sample_data/java_4.dwl"
+    },
+    "620712fd-8bc4-4266-85e1-312b3d89441c": {
+      "payload": "sample_data/java.dwl"
+    },
+    "448bea64-07db-4b9f-8197-a1b2af0fde52": {
+      "payload": "sample_data/java_3.dwl"
+    },
+    "eeb46879-fc9b-4e2f-8b98-8d3afe8d54bd": {},
+    "4ec8cf3b-6879-4883-964e-1e052bebdf8b": {},
+    "7f3eca8d-5e47-4651-8c26-db4d3cc99d6c": {},
+    "62a86a08-7f1d-4496-ba91-3dac156ba006": {
+      "payload": "sample_data/java_5.dwl"
+    },
+    "10601b64-ee38-40ce-abf4-6fbabe0ff4a4": {
+      "payload": "sample_data/java_6.dwl"
+    },
+    "aaf59dd7-0e4e-4695-878a-cc9ab75ba145": {
+      "payload": "sample_data/java_7.dwl"
+    },
+    "35b352cf-9117-4cd2-aa3d-1b27c22c3c72": {},
+    "5d7d15ad-3cc3-41a8-a668-13fea4b9b524": {},
+    "de175ee9-258a-40d4-9fec-6b9f38471784": {
+      "payload": "sample_data/java_8.dwl"
+    },
+    "d56d29fc-f059-486f-b625-dec9f4b5b84e": {
+      "payload": "sample_data/java_9.dwl"
+    }
+  }
+}
