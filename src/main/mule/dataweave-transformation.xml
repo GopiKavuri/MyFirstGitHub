@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="e7a52154-75b5-4951-af17-50cd167b3611" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<file:config name="File_Config" doc:name="File Config" doc:id="8c61f64d-827e-47cc-b70e-a8e1520cd6a8" >
+		<file:connection />
+	</file:config>
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="4c78cf23-4252-4608-b51a-1421b6fe3ef9" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="dataweave-transformationFlow" doc:id="f04ee675-7865-479e-bd8e-cd1a06439a19" >
+		<http:listener doc:name="Listener" doc:id="373407c4-4768-4618-9cef-3a33db453b2b" config-ref="HTTP_Listener_config" path="/books" allowedMethods="POST"/>
+		<ee:transform doc:name="Transform Message" doc:id="d56d29fc-f059-486f-b625-dec9f4b5b84e" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/xlsx
+---
+payload groupBy $.category]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<file:write doc:name="Write" doc:id="37bc544c-96da-4fa8-8f7f-40b3ee52fbaf" config-ref="File_Config" path="C:\Users\Gopi Kavuri\Desktop\new category books.xlsx"/>
+		<logger level="INFO" doc:name="Logger" doc:id="b8b502f0-4de7-421e-93c8-b9459e51ac15" message="end of the logger "/>
+	</flow>
+	<flow name="dataweave-transformationFlow1" doc:id="20736f9b-eb97-4c85-b379-ac676da98299" >
+		<http:listener doc:name="Listener" doc:id="45aea33f-8f1c-4ee5-a2de-05d6e0fbd7e5" config-ref="HTTP_Listener_config1" path="/json-object"/>
+		<ee:transform doc:name="Transform Message" doc:id="57135e52-b74e-4b38-943b-a820180ddd05" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+"{\"name\":\"Gopi\",\"country\":\"INDIA\"}"]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<ee:transform doc:name="Transform Message" doc:id="40cde791-d637-479c-a4ce-f8ca55bd652a" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+name:payload.name
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
